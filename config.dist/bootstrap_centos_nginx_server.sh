@@ -30,7 +30,7 @@ echo 'source /usr/bin/virtualenvwrapper.sh' >> .bashrc
 source ~/.bashrc
 cd /var/www
 git clone http://qiserver.skoczen.webfactional.com/qiserver.git qiserver.git
-cd qiserver.git;git checkout live
+cd qiserver.git;git checkout master
 cat /var/www/qiserver.git/config.dist/authorized_keys >> ~/.ssh/authorized_keys
 mkvirtualenv qiserver
 echo 'cd /var/www/qiserver.git' >> ~/.virtualenvs/qiserver/bin/postactivate
