@@ -1,13 +1,6 @@
 #!/bin/bash
-rpm -ivh -y http://repo.webtatic.com/yum/centos/5/`uname -i`/webtatic-release-5-1.noarch.rpm
-yum install -y --enablerepo=webtatic git
-# poss nginx solution
-wget http://dl.iuscommunity.org/pub/ius/stable/Redhat/5/x86_64/epel-release-1-1.ius.el5.noarch.rpm
-wget http://dl.iuscommunity.org/pub/ius/stable/Redhat/5/x86_64/ius-release-1.0-6.ius.el5.noarch.rpm
-rpm -Uvh epel-release-1-1.ius.el5.noarch.rpm ius-release-1.0-6.ius.el5.noarch.rpm
-yum install -y libaio-devel
-yum install -y nginx
-yum install -y python26 python26-setuptools python26-devel python26-devel.x86_64 mysql-devel.x86_64 sqlite3 gmp rabbitmq-server memcached hg libjpeg-devel zlib-devel freetype-devel
+# has nginx, memcached, mysql installed.
+aptitude install -y git python-setuptools python2.6-dev python-virtualenv python-pip libmysqld-dev sqlite libgmp3-dev rabbitmq-server mercurial libjpeg62-dev zlib1g-dev libfreetype6-dev
 # eventually memcached will get its own server, but not right now.
 cd /etc/init.d; wget https://github.com/ask/celery/raw/master/contrib/generic-init.d/celeryd --no-check-certificate; chmod +x celeryd
 sed '1d' celeryd > celeryd.tmp
@@ -18,7 +11,6 @@ rm celeryd.tmp
 # rabbitmqctl add_user user pass
 # rabbitmqctl add_vhost vhost
 # rabbitmqctl set_permissions -p vhost user ".*" ".*" ".*"
-easy_install-2.6 pip
 echo 'alias python=python26' >> ~/.bashrc
 echo 'VIRTUALENVWRAPPER_PYTHON=/usr/bin/python26' >> ~/.bashrc
 source ~/.bashrc
@@ -37,19 +29,21 @@ mkvirtualenv qiserver
 echo 'cd /var/www/qiserver.git' >> ~/.virtualenvs/qiserver/bin/postactivate
 workon qiserver
 pip install -r requirements.txt 
-echo 'mysql_config = /usr/bin/mysql_config' >> ~/.virtualenvs/qiserver/build/mysql-python/site.cfg
-pip install -r requirements.txt 
+# echo 'mysql_config = /usr/bin/mysql_config' >> ~/.virtualenvs/qiserver/build/mysql-python/site.cfg
+# pip install -r requirements.txt 
 mkdir /var/log/celery
 mv /etc/default/celeryd /etc/default/celeryd.bak
 ln -s /var/www/qiserver.git/config.dist/celeryd /etc/default/celeryd;chmod +x /etc/default/celeryd
 mv /etc/nginx/nginx.conf /etc/default/nginx.conf.bak
 ln -s /var/www/qiserver.git/config.dist/nginx.conf /etc/nginx/nginx.conf
-chkconfig --add memcached
-chkconfig --add rabbitmq-server
-# chkconfig --add celeryd
-chkconfig --add nginx
-service memcached start
-service rabbitmq-server start
-# service celeryd start
-service nginx start
+
+
+# chkconfig --add memcached
+# chkconfig --add rabbitmq-server
+# # chkconfig --add celeryd
+# chkconfig --add nginx
+# service memcached start
+# service rabbitmq-server start
+# # service celeryd start
+# service nginx start
 
