@@ -1,4 +1,9 @@
 #!/bin/bash
+# do this by hand
+# cd /var/www
+# aptitude install -y git
+# git clone http://qiserver.skoczen.webfactional.com/qiserver.git qiserver.git
+
 # has nginx, memcached, mysql installed.
 aptitude install -y git python-setuptools python2.6-dev python-virtualenv python-pip libmysqld-dev sqlite libgmp3-dev rabbitmq-server mercurial libjpeg62-dev zlib1g-dev libfreetype6-dev
 # eventually memcached will get its own server, but not right now.
@@ -22,7 +27,7 @@ chmod +x /root
 echo 'source /usr/bin/virtualenvwrapper.sh' >> .bashrc
 source ~/.bashrc
 cd /var/www
-git clone http://qiserver.skoczen.webfactional.com/qiserver.git qiserver.git
+# git clone http://qiserver.skoczen.webfactional.com/qiserver.git qiserver.git
 cd qiserver.git;git checkout master
 cat /var/www/qiserver.git/config.dist/authorized_keys >> ~/.ssh/authorized_keys
 mkvirtualenv qiserver
