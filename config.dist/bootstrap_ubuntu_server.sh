@@ -2,7 +2,7 @@
 # do this by hand
 # cd /var/www
 # aptitude install -y git
-# git clone http://qiserver.skoczen.webfactional.com/qiserver.git qiserver.git
+# git clone git@github.com:skoczen/qi-server.git qiserver.git
 
 # has nginx, memcached, mysql installed.
 aptitude install -y git python-setuptools python2.6-dev python-virtualenv python-pip libmysqld-dev sqlite libgmp3-dev rabbitmq-server mercurial libjpeg62-dev zlib1g-dev libfreetype6-dev
