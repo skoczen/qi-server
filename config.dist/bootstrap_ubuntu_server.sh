@@ -5,8 +5,10 @@
 # git clone git@github.com:skoczen/qi-server.git qiserver.git
 
 # has nginx, memcached, mysql installed.
-aptitude install -y git python-setuptools python2.6-dev python-virtualenv python-pip libmysqld-dev sqlite libgmp3-dev rabbitmq-server mercurial libjpeg62-dev zlib1g-dev libfreetype6-dev
-# eventually memcached will get its own server, but not right now.
+aptitude install -y git python-setuptools python2.6-dev python-virtualenv python-pip libmysqld-dev sqlite libgmp3-dev  mercurial libjpeg62-dev zlib1g-dev libfreetype6-dev
+
+# eventually rabbitmq-server
+# eventuall also memcached will get its own server, but not right now.
 cd /etc/init.d; wget https://github.com/ask/celery/raw/master/contrib/generic-init.d/celeryd --no-check-certificate; chmod +x celeryd
 sed '1d' celeryd > celeryd.tmp
 echo "# chkconfig: 2345 20 80" > celeryd
