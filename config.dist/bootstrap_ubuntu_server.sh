@@ -19,14 +19,14 @@ rm celeryd.tmp
 # rabbitmqctl add_vhost vhost
 # rabbitmqctl set_permissions -p vhost user ".*" ".*" ".*"
 echo 'alias python=python26' >> ~/.bashrc
-echo 'VIRTUALENVWRAPPER_PYTHON=/usr/bin/python26' >> ~/.bashrc
+echo 'VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python26' >> ~/.bashrc
 source ~/.bashrc
 mkdir /var/www
 mkdir /var/backups
 pip install --upgrade pip virtualenv virtualenvwrapper
 cd ~;mkdir .virtualenvs
 chmod +x /root
-echo 'source /usr/bin/virtualenvwrapper.sh' >> .bashrc
+echo 'source /usr/local/bin/virtualenvwrapper.sh' >> .bashrc
 source ~/.bashrc
 cd /var/www
 # git clone http://qiserver.skoczen.webfactional.com/qiserver.git qiserver.git
