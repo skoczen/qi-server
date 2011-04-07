@@ -19,7 +19,7 @@ rm celeryd.tmp
 # rabbitmqctl add_vhost vhost
 # rabbitmqctl set_permissions -p vhost user ".*" ".*" ".*"
 echo 'alias python=python26' >> ~/.bashrc
-echo 'VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python26' >> ~/.bashrc
+echo 'VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.6' >> ~/.bashrc
 source ~/.bashrc
 mkdir /var/www
 mkdir /var/backups
