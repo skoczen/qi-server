@@ -12,4 +12,4 @@ setup_env_centos("qiserver","root",
                     # 'dry_run':True,
                     'local_working_path':"~/workingCopy/qi/qiserver.git",
                 },
-                )
+)
