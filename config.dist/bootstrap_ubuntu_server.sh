@@ -5,7 +5,7 @@
 # git clone git@github.com:skoczen/qi-server.git qiserver.git
 
 # has nginx, memcached, mysql installed.
-aptitude install -y git python-setuptools python2.6-dev python-virtualenv python-pip libmysqld-dev sqlite libgmp3-dev  mercurial libjpeg62-dev zlib1g-dev libfreetype6-dev
+aptitude install -y git python-setuptools python2.6-dev python-virtualenv python-pip libmysqld-dev sqlite libgmp3-dev  mercurial libjpeg62-dev zlib1g-dev libfreetype6-dev postgresql postgresql-client python-psycopg2 postgresql-contrib
 
 # eventually rabbitmq-server
 # eventuall also memcached will get its own server, but not right now.

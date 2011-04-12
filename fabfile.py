@@ -4,7 +4,7 @@ setup_env_centos("qiserver","root",
                 initial_settings={
                     'staging_hosts':[],
                     'production_hosts':['qistaging.com'],
-                    'production_db_hosts':[],
+                    'production_db_hosts':['qistaging.com'],
                     'staging_db_hosts':[]
                 }, 
                 overrides={
