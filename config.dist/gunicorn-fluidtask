@@ -1,0 +1,12 @@
+description "Gunicorn for Fluidtask"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+#Send KILL after 20 seconds
+kill timeout 20
+
+script
+exec /root/.virtualenvs/fluidtask/bin/python /var/www/fluidtask.git/fluidtask/manage.py run_gunicorn 0.0.0.0:8002 -w 3 --preload 
+end script
+
+respawn
